@@ -33,7 +33,14 @@ const SolarSystemScreen = () => {
         <View style={styles.container}>
             <Text style={styles.title}>SOLAR SYSTEM</Text>
 
-            <TouchableOpacity style={styles.card}
+        <ScrollView
+        showVerticalScrollIndicator={false}
+        horizontal={false}
+        >
+            
+
+            <TouchableOpacity 
+                style={styles.card}
                 onPress={handleMercuryPress}
             >
 
@@ -53,7 +60,33 @@ const SolarSystemScreen = () => {
                     </Text>
                 </View>
 
+
             </TouchableOpacity>
+
+            <TouchableOpacity 
+                style={styles.card}
+                onPress={handleMercuryPress}
+            >
+
+                <Image
+                source={require('../../assets/images/venus.png')}
+                style={styles.planetImage}
+                />
+
+                <View style={styles.planetInfo}>
+                    <Text style={styles.planetName}>
+                        Venus
+                    </Text>
+
+                    <Text style={styles.description}>
+                        Venus is the hottest planet, with a thick atmosphere
+                        that traps heat from the sun
+                    </Text>
+                </View>
+
+            </TouchableOpacity>
+
+        </ScrollView>
 
 
 
@@ -78,6 +111,7 @@ const styles = StyleSheet.create({
     // buat planet card
     card: {
         marginHorizontal: 15,
+        marginBottom: 50,
         padding: 10,
 
         backgroundColor: '#F7E1B3',
@@ -88,6 +122,7 @@ const styles = StyleSheet.create({
 
         flexDirection: 'row',
         alignItems: 'center',
+        width: 'auto',
     },
 
     planetImage: {
@@ -95,9 +130,6 @@ const styles = StyleSheet.create({
         height: 60,
 
         borderRadius: 30,
-
-        justifyContent: 'center',
-        alignItems: 'center',
 
         marginRight: 12,
     },
