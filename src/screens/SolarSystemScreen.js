@@ -8,22 +8,39 @@ import {
     ImageBackground,
     Image,
     ScrollView,
-    TouchableOpacity
+    TouchableOpacity,
+    Alert,
 } from 'react-native';
 
 const SolarSystemScreen = () => {
+
+    // function untuk menampilkan alert ketika planet diklik
+    const handleMercuryPress = () => {
+        console.log('Mercury clicked');
+        Alert.alert(
+            'Alert',
+            'You clicked Mercury!',
+            [
+                {
+                    text: 'OK',
+                }
+            ]
+        );
+    }
+
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>SOLAR SYSTEM</Text>
 
+            <TouchableOpacity style={styles.card}
+                onPress={handleMercuryPress}
+            >
 
-
-            // planet planet
-            <View style={styles.card}>
-
-                <View style={styles.planetImage}>
-                    <Text>🌑</Text>
-                </View>
+                <Image
+                source={require('../../assets/images/mercury.png')}
+                style={styles.planetImage}
+                />
 
                 <View style={styles.planetInfo}>
                     <Text style={styles.planetName}>
@@ -36,7 +53,7 @@ const SolarSystemScreen = () => {
                     </Text>
                 </View>
 
-            </View>
+            </TouchableOpacity>
 
 
 
