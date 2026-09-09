@@ -14,12 +14,30 @@ import {
 
 const SolarSystemScreen = () => {
 
+
+    // list data planet
+    const planets = [
+        {
+            name: 'Mercury',
+            image: require('../../assets/images/mercury.png'),
+            description: 'Mercury is the fastest planet, zipping around the sun every 88 earth days',
+
+        },
+        {
+            name: 'Venus',
+            image: require('../../assets/images/venus.png'),
+            description: 'Venus is the hottest planet, with a thick atmosphere that traps heat from the sun',
+
+        },
+    ]
+
     // function untuk menampilkan alert ketika planet diklik
-    const handleMercuryPress = () => {
-        console.log('Mercury clicked');
+    const handlePlanetPress = (planet) => {
+        console.log(`${planets.name} clicked!`);
+
         Alert.alert(
             'Alert',
-            'You clicked Mercury!',
+            `You clicked ${planet.name}!`,
             [
                 {
                     text: 'OK',
@@ -38,53 +56,39 @@ const SolarSystemScreen = () => {
         horizontal={false}
         >
             
+            {planets.map((planet) => (
 
-            <TouchableOpacity 
-                style={styles.card}
-                onPress={handleMercuryPress}
-            >
+                <TouchableOpacity 
+                    key={planet.name}
+                    style={styles.card}
+                    onPress={ () => handlePlanetPress(planet.name)}
+                >
 
-                <Image
-                source={require('../../assets/images/mercury.png')}
-                style={styles.planetImage}
-                />
+                    <Image
+                    source={planet.image}
+                    style={styles.planetImage}
+                    />
 
-                <View style={styles.planetInfo}>
-                    <Text style={styles.planetName}>
-                        Mercury
-                    </Text>
+                    <View style={styles.planetInfo}>
 
-                    <Text style={styles.description}>
-                        Mercury is the fastest planet, zipping around
-                        the sun every 88 earth days
-                    </Text>
-                </View>
+                        <Text style={styles.planetName}>
+                            {planet.name}
+                        </Text>
 
+                        <Text style={styles.description}>
+                            {planet.description}
+                        </Text>
+                    </View>
 
-            </TouchableOpacity>
-
-            <TouchableOpacity 
-                style={styles.card}
-                onPress={handleMercuryPress}
-            >
-
-                <Image
-                source={require('../../assets/images/venus.png')}
-                style={styles.planetImage}
-                />
-
-                <View style={styles.planetInfo}>
-                    <Text style={styles.planetName}>
-                        Venus
-                    </Text>
-
-                    <Text style={styles.description}>
-                        Venus is the hottest planet, with a thick atmosphere
-                        that traps heat from the sun
-                    </Text>
-                </View>
 
             </TouchableOpacity>
+
+
+
+
+            ))}
+
+            
 
         </ScrollView>
 
@@ -106,12 +110,13 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         marginTop: 20,
+        marginBottom: 10,
     },
 
     // buat planet card
     card: {
         marginHorizontal: 15,
-        marginBottom: 50,
+        marginBottom: 10,
         padding: 10,
 
         backgroundColor: '#F7E1B3',
